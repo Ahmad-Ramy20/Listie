@@ -39,10 +39,20 @@ Listie is your new bestie, a task management application built with Flask. It al
 - **Duplicate Alert**: Recognizes duplicate tasks and shows an alert.
 - **Choose Theme**: Users can choose from five different-colored themes.
 
+## Technologies Used
+Flask: A micro web framework for Python used to build the web application.
+Jinja2: A templating engine for Python, used in Flask to generate HTML dynamically.
+HTML/CSS: Markup and styling for the front-end of the application.
+Python: The core programming language used to develop the application logic.
+File I/O: Reading from and writing tasks to text files.
+Bootstrap: For responsive design and UI components (if used).
+Git: Version control to manage the codebase.
+
 ## Prerequisites
 
 - Python 3.x
 - Flask
+- Web browser
 
 ## Installation
 
