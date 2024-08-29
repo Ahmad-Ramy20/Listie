@@ -41,7 +41,7 @@ Listie is your new bestie, a task management application built with Flask. It al
 
 ## Technologies Used
 - **Flask**: A micro web framework for Python used to build the web application.
-- **JavaScript**:Front-end interactivity.
+- **JavaScript**: Front-end interactivity.
 - **HTML/CSS**: Markup and styling for the application's front-end.
 - **Python**: The core programming language used to develop the application logic.
 - **File I/O**: Reading from and writing tasks to text files.
