@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='favicon-32x32.png') }}" type="image/png">
+    <link id="theme-stylesheet" rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <title>Listie</title>
+</head>
+<body>
+    
+<div class="outer-container">
+
+    <div id="buttons-container">
+        <button data-theme="default" class="switch_button" id="default">Default</button>
+        <button data-theme="dark" class="switch_button" id="dark">Dark</button>
+        <button data-theme="blue" class="switch_button" id="blue">Blue</button>
+        <button data-theme="green" class="switch_button" id="green">Green</button>
+        <button data-theme="red" class="switch_button" id="red">Red</button>
+    </div>
+
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <div class="container">
+        <h1>To-Do List</h1>
+    
+        {% if message %}
+            <div class="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+    
+        <ul>
+            {% if tasks and tasks | length > 0 %}
+                {% for task in tasks %}
+                    <li class="{{ 'completed' if task.status == 'completed' else 'uncompleted' }}"
+                        data-id="{{ task.id }}" onclick="toggleTask(this)">
+                        {{ task.id }}
+                        <div>
+                            <a href="/complete/{{ task.id }}">✔️</a>
+                            <a href="/remove/{{ task.id }}">🗑️</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li>No tasks found.</li>
+            {% endif %}
+        </ul>
+    
+        <form action="/add" method="post">
+            <input class="text-input" type="text" name="task" placeholder="Add a task" required>
+            <input type="submit" value="Add">
+        </form>
+    
+        <form action="/clear" method="post" style="margin-top: 10px; margin-bottom: 30px;">
+            <input type="submit" value="Clear All" style="background-color: #ff6666;">
+        </form>
+
+        <form action="/set_file" method="post" style="margin-top: 10px;">
+            <input class="text-input" type="text" name="file_name" placeholder="Open a list! ( name.txt )" required>
+            <input type="submit" value="Open">
+        </form>
+
+        <form action="/create_file" method="POST">
+            <input class="text-input" type="text" name="new_file_name" placeholder="Save list! ( name.txt )" required>
+            <input type="submit" value="Save" style="padding: 5px 11px;">
+        </form>
+    </div>          
+</div>
+</body>
+</html>
